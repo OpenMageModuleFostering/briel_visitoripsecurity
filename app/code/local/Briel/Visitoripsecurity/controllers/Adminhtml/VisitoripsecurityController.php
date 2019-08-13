@@ -150,6 +150,32 @@ class Briel_Visitoripsecurity_Adminhtml_VisitoripsecurityController extends Mage
 		}
 	
 		file_put_contents($cacheFile,serialize($arrBlocked));
+		
+		if(stripos($ip, '*') === false){
+		
+			$model = Mage::getModel('visitoripsecurity/log_remoteaddr_notes');
+			$collection = $model->getCollection();
+			$select = $collection->getSelect();
+			$select->where("remote_addr = '".$long_ip."'");
+			
+			$arrData = $collection->getData();
+					
+			if(!empty($arrData)){
+				//update
+				$model->load($arrData[0]['id']);
+				$model->setData('blocked', '1');
+				$model->save();
+			
+			}else{
+				//insert
+			
+				$model = Mage::getModel('visitoripsecurity/log_remoteaddr_notes');
+				$data = array('remote_addr'=>$long_ip, 'blocked'=>'1');
+				$model->setData($data);
+				$model->save();
+			
+			}
+		}
 	
 		echo 'blocked';
 	}
