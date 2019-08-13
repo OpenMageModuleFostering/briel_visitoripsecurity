@@ -1,0 +1,78 @@
+<script type="text/javascript">
+function updateNote(button, fieldId)
+{
+    new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl("*/*/updateNote") ?>', {
+        method: 'post',
+        parameters: { id: fieldId, note: $(button).getValue() }
+    });
+}
+function blockThisIp(button, fieldId)
+{
+    new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl("*/*/blockThisIp") ?>', {
+    method: 'post',
+    parameters: { ip: fieldId },
+    onSuccess: function(response){
+    	$(button).up(1).hide();
+		//$(button).up().update(response.responseText);
+		
+        }
+    });
+}
+function unBlockThisIp(button, fieldId)
+{
+    new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl("*/*/unBlockThisIp") ?>', {
+    method: 'post',
+    parameters: { ip: fieldId },
+    onSuccess: function(response){
+    	$(button).up(1).hide();
+		//$(button).up().update(response.responseText);
+        }
+    });
+}
+function whiteThisIp(button, fieldId)
+{
+    new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl("*/*/whiteThisIp") ?>', {
+    method: 'post',
+    parameters: { ip: fieldId },
+    onSuccess: function(response){
+    	$(button).up(1).hide();		
+    	//$(button).up().update(response.responseText);
+    }
+    });
+}
+function unWhiteThisIp(button, fieldId)
+{
+   	new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl("*/*/unWhiteThisIp") ?>', {
+   	method: 'post',
+    parameters: { ip: fieldId },
+    onSuccess: function(response){	
+   		$(button).up(1).hide();		
+    	//$(button).up().update(response.responseText);
+    }
+    });
+}
+function watchThisIp(button, fieldId)
+{
+	new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl("*/*/watchThisIp") ?>', {
+	method: 'post',
+	parameters: { ip: fieldId },
+	onSuccess: function(response){
+		$(button).up(1).hide();		
+		//$(button).up().update(response.responseText);
+		}
+	});
+}
+function unWatchThisIp(button, fieldId)
+{
+	new Ajax.Request('<?php echo Mage::helper("adminhtml")->getUrl("*/*/unWatchThisIp") ?>', {
+	method: 'post',
+	parameters: { ip: fieldId },
+		onSuccess: function(response){	
+			$(button).up(1).hide();		
+			//$(button).up().update(response.responseText);
+		}
+	});
+}
+</script>
+
+<?php
