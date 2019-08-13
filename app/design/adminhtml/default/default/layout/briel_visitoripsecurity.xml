@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <adminhtml_visitoripsecurity_index>
+        <reference name="js">
+            <block type="core/template" template="briel/visitoripsecurity/inline-edit.phtml" />
+        </reference>
+        <reference name="content">
+       		<block type="visitoripsecurity/adminhtml_grid" name="visitoripsecurity" />
+       	</reference>
+    </adminhtml_visitoripsecurity_index>
+    <adminhtml_visitoripsecurity_blocked>
+        <reference name="js">
+            <block type="core/template" template="briel/visitoripsecurity/inline-edit.phtml" />
+        </reference>
+        <reference name="content">
+       		<block type="visitoripsecurity/adminhtml_blocked" name="visitoripsecurity" />
+       	</reference>
+    </adminhtml_visitoripsecurity_blocked>
+    <adminhtml_visitoripsecurity_white>
+        <reference name="js">
+            <block type="core/template" template="briel/visitoripsecurity/inline-edit.phtml" />
+        </reference>
+        <reference name="content">
+       		<block type="visitoripsecurity/adminhtml_white" name="visitoripsecurity" />
+       	</reference>
+    </adminhtml_visitoripsecurity_white>
+    <adminhtml_visitoripsecurity_watch>
+        <reference name="js">
+            <block type="core/template" template="briel/visitoripsecurity/inline-edit.phtml" />
+        </reference>
+        <reference name="content">
+       		<block type="visitoripsecurity/adminhtml_watch" name="visitoripsecurity" />
+       	</reference>
+    </adminhtml_visitoripsecurity_watch>
+    <adminhtml_visitoripsecurity_logurl>
+        <reference name="js">
+            <block type="core/template" template="briel/visitoripsecurity/inline-edit.phtml" />
+        </reference>
+        <reference name="content">
+       		<block type="visitoripsecurity/adminhtml_logurl" name="visitoripsecurity" />
+       	</reference>
+    </adminhtml_visitoripsecurity_logurl>
+  	<adminhtml_visitoripsecurity_oneip>
+        <reference name="content">
+            <block type="core/template" template="briel/visitoripsecurity/oneip.phtml" />
+        </reference>
+    </adminhtml_visitoripsecurity_oneip>
+</layout>

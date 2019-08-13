@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Briel_Visitoripsecurity>
+			<version>0.1.0</version>
+		</Briel_Visitoripsecurity>
+	</modules>
+	<default>
+		<brielvisitoripsecurity>
+			<visitoripsecurityfront>
+				<send_emails>0</send_emails>
+				<first_limit>1000</first_limit>
+				<second_limit>10000</second_limit>
+			</visitoripsecurityfront>
+			<visitoripsecurityadmin>
+				<send_emails>0</send_emails>
+				<first_limit>1000</first_limit>
+				<second_limit>10000</second_limit>
+			</visitoripsecurityadmin>
+		</brielvisitoripsecurity>
+	</default>
+            
+	 <admin>
+        <routers>
+            <visitoripsecurity>
+                <use>admin</use>
+                <args>
+                    <module>Visitoripsecurity_Visitoripsecurity</module>
+                    <frontName>visitoripsecurity</frontName>
+                </args>
+            </visitoripsecurity>
+        </routers>
+        <routers>
+            <adminhtml>
+                 <args>
+                     <modules>
+                         <visitoripsecurity before="Mage_Adminhtml">Briel_Visitoripsecurity_Adminhtml</visitoripsecurity>
+                     </modules>
+                 </args>
+             </adminhtml>
+        </routers>
+    </admin>
+	<adminhtml>
+        <menu>
+            <customer translate="title" module="customer">
+                <children>
+                    <first_page module="visitoripsecurity">
+                        <title>Visitor IP security</title>
+						<sort_order>150</sort_order>
+                        <action>adminhtml/visitoripsecurity</action>
+                        <children>
+                        	<viewList module="visitoripsecurity">
+                        		<title>View visitor list</title>
+								<sort_order>100</sort_order>
+		                        <action>adminhtml/visitoripsecurity</action>
+                        	</viewList>
+                        </children>
+                        <children>
+                        	<viewBlocked module="visitoripsecurity">
+                        		<title>View blocked</title>
+								<sort_order>200</sort_order>
+		                        <action>adminhtml/visitoripsecurity/blocked</action>
+                        	</viewBlocked>
+                        </children>
+                        <children>
+                        	<viewWhite module="visitoripsecurity">
+                        		<title>View white list</title>
+								<sort_order>200</sort_order>
+		                        <action>adminhtml/visitoripsecurity/white</action>
+                        	</viewWhite>
+                        </children>
+                        <children>
+                        	<viewWhite module="visitoripsecurity">
+                        		<title>View white list</title>
+								<sort_order>300</sort_order>
+		                        <action>adminhtml/visitoripsecurity/white</action>
+                        	</viewWhite>
+                        </children>
+                        <children>
+                        	<viewWatch module="visitoripsecurity">
+                        		<title>View watch list</title>
+								<sort_order>400</sort_order>
+		                        <action>adminhtml/visitoripsecurity/watch</action>
+                        	</viewWatch>
+                        </children>
+                        <children>
+                        	<blockOne module="visitoripsecurity">
+                        		<title>Block ip classes</title>
+								<sort_order>500</sort_order>
+		                        <action>adminhtml/visitoripsecurity/oneip</action>
+                        	</blockOne>
+                        </children>
+						<children>
+                        	<blockOne module="visitoripsecurity">
+                        		<title>Settings</title>
+								<sort_order>600</sort_order>
+		                        <action>adminhtml/system_config/edit/section/brielvisitoripsecurity</action>
+                        	</blockOne>
+                        </children>
+                    </first_page>
+                </children>
+            </customer>
+        </menu>
+        <layout>
+	        <updates>
+	            <visitoripsecurity>
+	                <file>briel_visitoripsecurity.xml</file>
+	            </visitoripsecurity>
+	        </updates>
+	    </layout>
+	    <translate>
+            <modules>
+                <visitoripsecurity>
+                    <files>
+                        <default>Briel_Visitoripsecurity.csv</default>
+                    </files>
+                </visitoripsecurity>
+            </modules>
+        </translate>
+    </adminhtml>
+    <global>
+    	<events>
+        	<controller_front_init_before>
+        		<observers>
+					<briel_visitoripsecurity_observer>
+                        <type>model</type>
+                        <class>Briel_Visitoripsecurity_Model_Observer</class>
+                        <method>checkBlocked</method>
+                    </briel_visitoripsecurity_observer>
+        		</observers>
+        	</controller_front_init_before>
+        </events>
+    	<models>
+    		<log_mysql4>
+	    		<rewrite>
+	        	 	<visitor_collection>Briel_Visitoripsecurity_Model_Mysql4_Visitoripsecurity_Collection</visitor_collection>
+	        	</rewrite>
+        	 </log_mysql4>
+        	 <visitoripsecurity>
+        	 	<class>Briel_Visitoripsecurity_Model</class>
+        	 	<resourceModel>visitoripsecurity_mysql4</resourceModel>
+        	 </visitoripsecurity>
+        	 <visitoripsecurity_mysql4>
+        	 	<class>Briel_Visitoripsecurity_Model_Mysql4</class>
+        	 	<entities>
+        	 		<log_remoteaddr_notes>
+        	 			<table>log_remoteaddr_notes</table>
+        	 		</log_remoteaddr_notes>
+        	 	</entities>
+        	 	<entities>
+        	 		<log_url>
+        	 			<table>log_url</table>
+        	 		</log_url>
+        	 	</entities>
+        	 </visitoripsecurity_mysql4>
+    	</models>
+    	<resources>
+            <visitoripsecurity_setup>
+                <setup>
+                    <module>Briel_Visitoripsecurity</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </visitoripsecurity_setup>
+            <visitoripsecurity_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </visitoripsecurity_write>
+            <visitoripsecurity_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </visitoripsecurity_read>
+        </resources>
+        <blocks>
+            <visitoripsecurity>
+                <class>Briel_Visitoripsecurity_Block</class>
+            </visitoripsecurity>
+        </blocks>
+        <helpers>
+            <visitoripsecurity>
+                <class>Briel_Visitoripsecurity_Helper</class>
+            </visitoripsecurity>
+        </helpers>
+    </global>
+</config>

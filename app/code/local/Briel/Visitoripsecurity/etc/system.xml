@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <brielall translate="label">
+            <label>Briel ext</label>
+            <sort_order>390</sort_order>
+        </brielall>
+    </tabs>
+    <sections>
+		<brielvisitoripsecurity translate="label" module="visitoripsecurity">
+			<label>Visitor IP security</label>
+			<tab>brielall</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>100</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<visitoripsecurityadmin translate="label comment">
+                    <label>Visitor IP security settings</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<send_emails translate="label comment">
+                            <label>Send notification emails?</label>
+                            <comment><![CDATA[Send notification emails when the visits limit is passed.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </send_emails>
+                        <email_to translate="label comment">
+                            <label>Send mail to</label>
+                            <comment><![CDATA[Write here the email address where you will receive notices]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_to>
+                        <first_limit translate="label comment">
+                            <label>First visits limit</label>
+                            <comment><![CDATA[If an user passes this number of visits in the last 24 hours, an email will be sent]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </first_limit>
+                        <second_limit translate="label comment">
+                        <comment><![CDATA[If an user passes this number of visits in the last 7 days, an email will be sent]]></comment>
+                            <label>Second visits limit</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </second_limit>      
+                    </fields>
+                </visitoripsecurityadmin>
+              </groups>
+        </brielvisitoripsecurity>
+    </sections>
+</config>
