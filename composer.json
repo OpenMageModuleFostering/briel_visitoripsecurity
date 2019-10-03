@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/Briel_VisitorIpSecurity",
+    "name": "OpenMageModuleFostering\/Briel_VisitorIpSecurity",
     "type": "magento-module",
     "license": "GNU-General-Public-License-(GPL)",
     "homepage": "",
     "description": "Allows user to see what ip's visited the store, block, watch, whitelist those ip's",
     "authors": [
-    {
-        "name": "Velica Onel",
-        "email": "mage@briel.ro"
-    }
-],
+        {
+            "name": "Velica Onel",
+            "email": "mage@briel.ro"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
